@@ -4,7 +4,7 @@ var gulp 			= require('gulp'),
 	autoPrefixer 	= require('gulp-autoprefixer'),
 	minifyCSS 		= require('gulp-minify-css'),
 	browserify 		= require('gulp-browserify'),
-	uglify 			= require('gulp-uglify'),
+	// uglify 			= require('gulp-uglify'),
 	concat			= require('gulp-concat'),
 	copy 			= require('gulp-copy'),
 	livereload 		= require('gulp-livereload'),
@@ -16,7 +16,6 @@ var gulp 			= require('gulp'),
 	iconfontCss 	= require('gulp-iconfont-css');
 // -----------------------------------------------------------
 
-
 gulp.task('sass', function() {
 	gulp.src("src/sass/*.scss")
 	.pipe(sass())
@@ -25,9 +24,10 @@ gulp.task('sass', function() {
 		this.emit('end');
 	})
 	.pipe(autoPrefixer())
-	.pipe(minifyCSS())
+	// .pipe(minifyCSS())
 	.pipe(gulp.dest("build/css"));
 });
+
 gulp.task('templates', function() {
   gulp.src('src/jade/**/*.jade')
 	.pipe(jade({}))
@@ -37,6 +37,7 @@ gulp.task('templates', function() {
 	})
 	.pipe(gulp.dest('./build'))
 });
+
 gulp.task('images', function() {
   return gulp.src('./src/images/**/*')
     .pipe(cache(
@@ -50,6 +51,7 @@ gulp.task('images', function() {
     ))
     .pipe(gulp.dest('./build/img'));
 });
+
 gulp.task('browserify', function() {
 	gulp.src(['src/javascripts/main.js'])
 	.pipe(browserify({
@@ -60,7 +62,7 @@ gulp.task('browserify', function() {
 		console.log(error);
 		this.emit('end');
 	})
-	.pipe(uglify())
+	// .pipe(uglify())
 	.pipe(concat('app.js'))
 	.pipe(gulp.dest('build/js'));
 });
@@ -102,6 +104,7 @@ gulp.task('webserver', function() {
       fallback: 'index.html'
     }));
 });
+
 gulp.task('watch', function() {
 	gulp.watch("src/icons/**/*.svg", 		['iconfont'		]);
 	gulp.watch("src/assets/**/*", 			['iconfont'		]);
@@ -112,5 +115,7 @@ gulp.task('watch', function() {
 	gulp.watch('src/images/**', 			['images'		]);
 	gulp.watch('src/bin/**', 				['insert-bin'	]);
 });
+
 gulp.task('build-all',['iconfont','sass','templates','browserify','bundle-libs','images','insert-bin']);
-gulp.task('default',['watch','webserver']);
+
+gulp.task('default', ['watch', 'webserver']);

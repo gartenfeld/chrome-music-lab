@@ -247,5 +247,4 @@ var spec3D = {
   }
 };
 
-
 module.exports = spec3D;
