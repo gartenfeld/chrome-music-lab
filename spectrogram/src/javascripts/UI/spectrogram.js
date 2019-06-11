@@ -16,7 +16,7 @@ limitations under the License.
 
 'use strict'
 var Util = require('../util/util.js');
-var Player = require('../ui/player');
+var Player = require('../UI/player');
 var AnalyserView = require('../3D/visualizer');
 
 

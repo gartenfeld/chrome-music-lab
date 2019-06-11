@@ -108,6 +108,11 @@ Player.prototype.playHelper_ = function(src) {
 };
 
 Player.prototype.live = function() {
+	// The AudioContext may be in a suspended state prior to the page receiving a user
+	// gesture. If it is, resume it.
+	if (this.context.state === 'suspended') {
+		this.context.resume();
+	}
 	if(window.isIOS){
 		window.parent.postMessage('error2','*');
 		console.log("cant use mic on ios");

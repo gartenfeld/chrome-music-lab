@@ -15,7 +15,7 @@ limitations under the License.
 *********************************************************/
 
 var Matrix4x4 = require('./matrix4x4');
-var CameraController = require('./cameraController');
+var CameraController = require('./cameracontroller');
 
 var ANALYSISTYPE_FREQUENCY 		= 0;
 var ANALYSISTYPE_SONOGRAM 		= 1;

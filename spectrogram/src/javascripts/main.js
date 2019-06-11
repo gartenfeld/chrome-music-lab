@@ -19,7 +19,7 @@ const throwIOSError = () => {
 };
 
 // -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
-var spec3D = require('./ui/spectrogram');
+var spec3D = require('./UI/spectrogram');
 // -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 
 var locale = require('./util/locale');
